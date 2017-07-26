@@ -1,5 +1,7 @@
 package ext
 
+import "net/textproto"
+
 // HTTP meta constants.
 const (
 	HTTPType   = "http"
@@ -9,7 +11,7 @@ const (
 )
 
 // Distributed tracing headers
-const (
-	HTTPTraceIDHeader  = "x-datadog-trace-id"
-	HTTPParentIDHeader = "x-datadog-parent-id"
+var (
+	HTTPTraceIDHeader  = textproto.CanonicalMIMEHeaderKey("X-Datadog-Trace-Id")
+	HTTPParentIDHeader = textproto.CanonicalMIMEHeaderKey("X-Datadog-Parent-Id")
 )
