@@ -71,7 +71,7 @@ func (m *MuxTracer) trace(req *http.Request) (*http.Request, *tracer.Span) {
 	span.SetMeta(ext.HTTPURL, path)
 
 	if parent_id, ok := req.Header[ext.HTTPParentIDHeader]; ok && len(parent_id) != 0 {
-		span.SpanID, _ = strconv.ParseUint(parent_id[0], 10, 64)
+		span.ParentID, _ = strconv.ParseUint(parent_id[0], 10, 64)
 	}
 
 	if trace_id, ok := req.Header[ext.HTTPTraceIDHeader]; ok && len(trace_id) != 0 {

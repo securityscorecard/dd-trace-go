@@ -62,7 +62,7 @@ func (m *middleware) Handle(c *gin.Context) {
 	c.Set(key, span)
 
 	if parent_id, ok := c.Request.Header[ext.HTTPParentIDHeader]; ok && len(parent_id) != 0 {
-		span.SpanID, _ = strconv.ParseUint(parent_id[0], 10, 64)
+		span.ParentID, _ = strconv.ParseUint(parent_id[0], 10, 64)
 	}
 
 	if trace_id, ok := c.Request.Header[ext.HTTPTraceIDHeader]; ok && len(trace_id) != 0 {
